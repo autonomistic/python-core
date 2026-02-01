@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>{{ chapter.title }}</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Problem</th>
+        <th>Difficulty</th>
+        <th>Points</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in problems %}
+        {% set up = status_map.get(p.id) %}
+        <tr>
+          <td><a href="{{ url_for('main.problem_detail', problem_id=p.id) }}">{{ p.title }}</a></td>
+          <td>{{ p.difficulty }}</td>
+          <td>{{ p.points }}</td>
+          <td class="status status-{{ up.status if up else 'unsolved' }}">{{ up.status if up else 'unsolved' }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

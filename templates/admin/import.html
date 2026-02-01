@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Bulk Import</h1>
+  <p class="muted">Paste JSON payload. Format:</p>
+  <pre class="code">{
+  "chapters": [
+    {
+      "title": "Basics",
+      "position": 1,
+      "problems": [
+        {"title": "Hello", "difficulty": "easy", "points": 5, "tags": ["io"], "prompt": "..."}
+      ]
+    }
+  ]
+}</pre>
+  <form method="post">
+    <textarea class="code" name="payload" rows="16"></textarea>
+    <button class="btn btn-primary" type="submit">Import</button>
+  </form>
+</section>
+{% endblock %}

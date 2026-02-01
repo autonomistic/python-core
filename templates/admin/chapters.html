@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>New Chapter</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Title</label>
+    {{ form.title(class_='input') }}
+    <label>Position</label>
+    {{ form.position(class_='input') }}
+    <button class="btn btn-primary" type="submit">Create</button>
+  </form>
+</section>
+{% endblock %}

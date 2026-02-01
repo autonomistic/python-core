@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Chapters</h1>
+  <div class="chapter-grid">
+    {% for chapter in chapters %}
+      <a class="chapter-card" href="{{ url_for('main.chapter_detail', slug=chapter.slug) }}">
+        <h3>{{ chapter.title }}</h3>
+        <span class="muted">{{ chapter.problems|length }} problems</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

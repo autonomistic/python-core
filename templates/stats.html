@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Stats</h1>
+  <div class="stat-grid">
+    <div class="stat"><span>XP</span><strong>{{ stats.xp }}</strong></div>
+    <div class="stat"><span>Level</span><strong>{{ stats.level }}</strong></div>
+    <div class="stat"><span>Streak</span><strong>{{ stats.current_streak }}d</strong></div>
+    <div class="stat"><span>Longest Streak</span><strong>{{ stats.longest_streak }}d</strong></div>
+    <div class="stat"><span>Total Time</span><strong>{{ (stats.total_time_sec // 3600) }}h</strong></div>
+  </div>
+</section>
+{% endblock %}

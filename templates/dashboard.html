@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Dashboard</h1>
+    <p class="muted">Keep the streak alive. Focus on the next problem.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat">
+      <span>Level</span>
+      <strong>{{ stats.level }}</strong>
+    </div>
+    <div class="stat">
+      <span>XP</span>
+      <strong>{{ stats.xp }}</strong>
+    </div>
+    <div class="stat">
+      <span>Streak</span>
+      <strong>{{ stats.current_streak }}d</strong>
+    </div>
+    <div class="stat">
+      <span>Total Time</span>
+      <strong>{{ (stats.total_time_sec // 3600) }}h</strong>
+    </div>
+  </div>
+</section>
+
+<section class="grid-2">
+  <div class="card">
+    <h2>Progress</h2>
+    {% for chapter, solved, total, pct in chapter_progress %}
+      <div class="progress-row">
+        <div>
+          <strong>{{ chapter.title }}</strong>
+          <span class="muted">{{ solved }}/{{ total }}</span>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" style="width: {{ pct }}%"></div>
+        </div>
+      </div>
+    {% else %}
+      <p class="muted">No chapters yet. Add some in Admin.</p>
+    {% endfor %}
+  </div>
+
+  <div class="card">
+    <h2>Today</h2>
+    <ul class="activity">
+      {% for item in today_activity %}
+        <li>{{ item.action }} · {{ item.created_at.strftime('%H:%M') }}</li>
+      {% else %}
+        <li class="muted">No activity yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

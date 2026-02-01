@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="auth-card">
+  <h1>Login</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Email</label>
+    {{ form.email(class_='input') }}
+    <label>Password</label>
+    {{ form.password(class_='input') }}
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <p class="muted">Need an invite? Ask yourself 😉</p>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="problem-header">
+  <div>
+    <h1>{{ problem.title }}</h1>
+    <div class="meta">
+      <span class="badge">{{ problem.difficulty }}</span>
+      <span class="badge">{{ problem.points }} pts</span>
+      {% for tag in problem.tags %}
+        <span class="badge ghost">{{ tag.name }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="status status-{{ user_problem.status }}">{{ user_problem.status }}</div>
+</section>
+
+<section class="grid-2">
+  <div class="card">
+    <h2>Prompt</h2>
+    <p class="muted">{{ problem.prompt or 'Add prompt in Admin.' }}</p>
+  </div>
+
+  <div class="card">
+    <h2>Editor</h2>
+    <form method="post" action="{{ url_for('main.save_problem', problem_id=problem.id) }}">
+      <input type="hidden" name="mark_solved" id="mark_solved" value="false" />
+      <textarea class="code" name="code" id="code" rows="14">{{ user_problem.code }}</textarea>
+      <label>Notes</label>
+      <textarea class="input" name="notes" rows="4">{{ user_problem.notes }}</textarea>
+      <div class="row">
+        <button class="btn" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit" onclick="document.getElementById('mark_solved').value='true'">Mark solved</button>
+      </div>
+    </form>
+    <div class="muted small">Autosave to browser storage is active.</div>
+  </div>
+</section>
+
+<script>
+  window.PC_PROBLEM_ID = {{ problem.id }};
+</script>
+{% endblock %}

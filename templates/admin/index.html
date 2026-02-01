@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Admin</h1>
+  <div class="row">
+    <a class="btn" href="{{ url_for('admin.new_chapter') }}">New Chapter</a>
+    <a class="btn" href="{{ url_for('admin.new_problem') }}">New Problem</a>
+    <a class="btn" href="{{ url_for('admin.bulk_import') }}">Bulk Import</a>
+  </div>
+  <h2>Chapters</h2>
+  <ul class="list">
+    {% for chapter in chapters %}
+      <li>{{ chapter.title }} <span class="muted">({{ chapter.problems|length }} problems)</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

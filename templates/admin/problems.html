@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>New Problem</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Chapter</label>
+    <select name="chapter_id" class="input">
+      {% for chapter in chapters %}
+        <option value="{{ chapter.id }}">{{ chapter.title }}</option>
+      {% endfor %}
+    </select>
+    <label>Title</label>
+    {{ form.title(class_='input') }}
+    <label>Difficulty</label>
+    {{ form.difficulty(class_='input') }}
+    <label>Points</label>
+    {{ form.points(class_='input') }}
+    <label>Tags</label>
+    {{ form.tags(class_='input') }}
+    <label>Prompt</label>
+    {{ form.prompt(class_='input') }}
+    <button class="btn btn-primary" type="submit">Create</button>
+  </form>
+</section>
+{% endblock %}

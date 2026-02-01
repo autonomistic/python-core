@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Registration Closed</h1>
+  <p>Invites are disabled. Login with your existing account.</p>
+  <a class="btn btn-primary" href="{{ url_for('auth.login') }}">Go to login</a>
+</section>
+{% endblock %}
